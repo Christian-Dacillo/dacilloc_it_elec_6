@@ -15,3 +15,4 @@ newPost = ''
   this.newPost = this.enteredValue
   }
 }
+
