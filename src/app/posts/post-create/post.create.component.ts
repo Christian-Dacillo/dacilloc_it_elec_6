@@ -7,5 +7,11 @@ import { Component } from '@angular/core';
   })
 
 export class PostCreateComponent {
+enteredValue = 'Temp'
+newPost = ''
+  onAddPost(){
+    console.log("okaayna")
 
+  this.newPost = this.enteredValue
+  }
 }
