@@ -1,5 +1,11 @@
 <app-header></app-header>
 <main>
-    <app-post-create (postCreated)="onPostAdded($event)"></app-post-create>
-    <app-post-list [post]="storedPosts"></app-post-list>
+  <div class="content-container">
+    <section class="card">
+      <app-post-create></app-post-create>
+    </section>
+    <section class="card">
+      <app-post-list></app-post-list>
+    </section>
+  </div>
 </main>
