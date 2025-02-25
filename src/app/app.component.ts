@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
 
-interface Post{
-  
+interface Post {
   id: number;
-  title: any;
-  content: any;
+  title: string;
+  content: string;
 }
 
 @Component({
@@ -13,9 +12,9 @@ interface Post{
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'dacillo';
+  title = 'it_elec_6a' 
   storedPosts: Post[] = [];
-  onPostAdded(post: any): void{
+  onPostAdded(post: Post) {
     this.storedPosts.push(post);
   }
 }
