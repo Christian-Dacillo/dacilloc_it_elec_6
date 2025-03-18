@@ -1,19 +1,4 @@
-:host {
-    display: block;
-    margin-top: 1rem;
-  }
-  
-  .info-text {
-    text-align: center;
-  }
-  
-  mat-accordion {
-    width: 80%;
-    max-width: 800px;
-    margin: 1rem auto;
-  }
-  
-  .margin-top {
-    width: 80%;
-    margin-top: 1rem;
-  }
+.margintop {
+  width: 100%;
+  margin-top: 1rem;
+}
