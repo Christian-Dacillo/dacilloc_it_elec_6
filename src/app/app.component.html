@@ -1,5 +1,17 @@
-<app-header></app-header>
+<!-- <app-header></app-header>
 <main>
-  <post-create></post-create>
-  <post-list></post-list>
+  <div class="content-container">
+    <section class="card">
+      <app-post-create></app-post-create>
+    </section>
+    <section class="card">
+      <app-post-list></app-post-list>
+    </section>
+  </div>
+  <router-outlet></router-outlet>
+</main> -->
+
+<app-header></app-header>  
+<main>  
+ <router-outlet></router-outlet>  
 </main>

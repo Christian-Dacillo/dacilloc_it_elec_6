@@ -1,108 +1,35 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const mongoose = require('mongoose')
-
-const Post = require('./models/post');
-
+const express = require("express");
 const app = express();
+const bodyParser = require("body-parser");
+const mongoose = require("mongoose");
+const postsRoutes = require("./routes/posts");
+const Post = require("./models/post");
+const path = require("path");
 
-mongoose.connect("mongodb+srv://ChristianDacillo:dacillo29@christian29.j1vl3.mongodb.net/?retryWrites=true&w=majority&appName=Christian29")
-.then(() => {
+mongoose.connect("mongodb+srv://ChristianDacillo:dacillo29@christian29.j1vl3.mongodb.net/?retryWrites=true&w=majority&appName=Christian29"
+).then(() => {
     console.log('Connected to database!');
-})
-.catch(() => {
+}).catch(() => {
     console.log('Connection failed!');
-})
+});
 
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use((req, res, next) => {
-    res.setHeader('Access-Control-Allow-Origin', "*");
-    res.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    res.setHeader("Access-Control-Allow-Methods", "GET, POST, PATCH, PUT, DELETE, OPTIONS");
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    res.setHeader(
+        "Access-Control-Allow-Headers",
+        "Origin, X-Requested-With, Content-Type, Accept"
+    );
+    res.setHeader(
+        "Access-Control-Allow-Methods",
+        "GET, POST, PATCH, PUT, DELETE, OPTIONS"
+    );
     next();
-})
-
-app.post("/api/posts", async (req, res, next) => {
-    try {
-        const post = new Post({
-            title: req.body.title,
-            content: req.body.content
-        });
-
-        const createdPost = await post.save();
-
-        res.status(201).json({
-            message: "Post added successfully",
-            postId: createdPost._id.toString()
-        });
-    } catch (error) {
-        console.error("Post creation error:", error);
-        res.status(500).json({ message: "Internal Server Error" });
-    }
 });
 
-app.get("/api/posts", (req, res, next) => {
-    const posts = [
-    {
-        id: "asdasas",
-        title: "First server-side posting",
-        content: "This is coming from the server"
-    },
-    {
-        id: "asdasdasa",
-        title: "Second server-side post",
-        content: "This is coming from the server!"
-    },
-    ];
+app.use("/api/posts", postsRoutes);
+app.use("/images", express.static(path.join("backend/images")));
 
-    res.status(200).json({
-        message: 'Posts fetched successfully!',
-        posts: posts
-    });
-})
-
-app.get("/api/posts", async (req, res, next) => {
-    try {
-        const posts = await Post.find(); 
-
-        const mappedPosts = posts.map(post => ({
-            id: post._id.toString(),
-            title: post.title,
-            content: post.content
-        }));
-
-        res.status(200).json({ message: "Posts fetched successfully", posts: mappedPosts });
-    } catch (error) {
-        console.error("Error fetching posts:", error);
-        res.status(500).json({ message: "Internal Server Error" });
-    }
-});
-
-app.put("/api/posts/:id", async (req, res, next) => {
-    try {
-        const post = await Post.findByIdAndUpdate(req.params.id, {
-            title: req.body.title,
-            content: req.body.content
-        }, { new: true });
-
-        if (!post) {
-            return res.status(404).json({ message: "Post not found" });
-        }
-
-        res.status(200).json({ message: "Post updated successfully" });
-    } catch (error) {
-        console.error("Update error:", error);
-        res.status(500).json({ message: "Internal Server Error" });
-    }
-});
-
-app.delete("/api/posts/:id", (req, res,next) => {
-    Post.deleteOne({_id: req.params.id}).then(result => {
-        console.log(result);
-        console.log(req.params.id);
-        res.status(200).json({message: "Post deleted"});
-        })
-    });
 module.exports = app;
