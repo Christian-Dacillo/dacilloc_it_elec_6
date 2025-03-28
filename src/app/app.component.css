@@ -1,90 +1,90 @@
-
+/* 
 :host {
-    display: block;
-    min-height: 100vh;
-    background-color: #f8f9fa;
-    font-family: 'Roboto', sans-serif;
-  }
-  
-  
+  display: block;
+  min-height: 100vh;
+  background-color: #f8f9fa;
+  font-family: 'Roboto', sans-serif;
+}
+
+
+main {
+  width: 100%;
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.content-container {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
   main {
-    width: 100%;
-    max-width: 1200px;
-    margin: 2rem auto;
-    padding: 0 1rem;
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    animation: fadeIn 0.3s ease-out;
+    padding: 0 2rem;
   }
   
   .content-container {
-    display: grid;
-    gap: 2rem;
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
   }
-  
-  @media (min-width: 768px) {
-    main {
-      padding: 0 2rem;
-    }
-    
-    .content-container {
-      grid-template-columns: repeat(2, 1fr);
-    }
+}
+
+
+@media (max-width: 768px) {
+  main {
+    margin: 1rem auto;
   }
-  
-  
-  @media (max-width: 768px) {
-    main {
-      margin: 1rem auto;
-    }
-    
-    .example-form {
-      max-width: 100%;
-      margin: 0 1rem;
-    }
-  }
-  
-  
-  .card {
-    width: 85%;
-    background: white;
-    border-radius: 12px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    padding: 1.5rem;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-  }
-  
-  .card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-  }
-  
   
   .example-form {
-    min-width: 150px;
     max-width: 100%;
-    width: 100%;
-    background-color: #ffffff;
-    padding: 1.5rem;
-    border-radius: 12px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 0 1rem;
   }
-  
-  .example-full-width {
-    width: 100%;
-    margin-bottom: 1rem;
+}
+
+
+.card {
+  width: 85%;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+
+.example-form {
+  min-width: 150px;
+  max-width: 100%;
+  width: 100%;
+  background-color: #ffffff;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.example-full-width {
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
   }
-  
-  
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(10px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
+} */
